@@ -45,7 +45,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.fastfood_outlined,
+                    Icons.directions_bus_rounded,
                     color: Color(0xFF8B97A2),
                     size: 90,
                   ),
@@ -56,7 +56,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Seems you don’t have any orders',
+                          'Du hast noch keine Tickets gekauft',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title3.override(
                                 fontFamily: 'Lexend Deca',
@@ -76,7 +76,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       children: [
                         Expanded(
                           child: Text(
-                            'Browse our menu to find items you want to order, once you place orders, they will appear here.',
+                            'Bitte gib uns dein Geld!',
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
@@ -102,7 +102,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         );
                       },
-                      text: 'Browse Menu',
+                      text: 'Niemals',
                       options: FFButtonOptions(
                         width: 170,
                         height: 50,
