@@ -1,7 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home_page/home_page_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -121,7 +121,9 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HomePageWidget(),
+                                                    NavBarPage(
+                                                        initialPage:
+                                                            'HomePage'),
                                               ),
                                             );
                                           },

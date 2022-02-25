@@ -1,7 +1,7 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../second_page/second_page_widget.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +14,8 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+  LatLng googleMapsCenter;
+  Completer<GoogleMapController> googleMapsController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -24,7 +26,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => SecondPageWidget(),
+          builder: (context) => NavBarPage(initialPage: 'second_page'),
         ),
       );
     });
@@ -34,13 +36,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: true,
-        actions: [],
-        centerTitle: true,
-        elevation: 4,
-      ),
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF5F5F5),
       body: SafeArea(
         child: GestureDetector(
@@ -65,118 +61,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [],
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SecondPageWidget(),
-                                  ),
-                                );
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 0, 12, 0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30,
-                                      borderWidth: 1,
-                                      buttonSize: 60,
-                                      icon: Icon(
-                                        Icons.add_box_outlined,
-                                        color: Colors.black,
-                                        size: 30,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
-                                    ),
-                                  ),
-                                  Text(
-                                    'Tickets',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30,
-                                  borderWidth: 1,
-                                  buttonSize: 60,
-                                  icon: Icon(
-                                    Icons.add_box_outlined,
-                                    color: Colors.black,
-                                    size: 30,
-                                  ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
-                                Text(
-                                  'Auskunft',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30,
-                                  borderWidth: 1,
-                                  buttonSize: 60,
-                                  icon: Icon(
-                                    Icons.add_box_outlined,
-                                    color: Colors.black,
-                                    size: 30,
-                                  ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
-                                Text(
-                                  'Verbindung',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                Expanded(
+                  child: FlutterFlowGoogleMap(
+                    controller: googleMapsController,
+                    onCameraIdle: (latLng) => googleMapsCenter = latLng,
+                    initialLocation: googleMapsCenter ??=
+                        LatLng(13.106061, -59.613158),
+                    markerColor: GoogleMarkerColor.violet,
+                    mapType: MapType.normal,
+                    style: GoogleMapStyle.standard,
+                    initialZoom: 14,
+                    allowInteraction: true,
+                    allowZoom: true,
+                    showZoomControls: true,
+                    showLocation: true,
+                    showCompass: true,
+                    showMapToolbar: false,
+                    showTraffic: false,
+                    centerMapOnMarkerTap: true,
+                  ),
                 ),
               ],
             ),
