@@ -7,6 +7,7 @@ import 'flutter_flow/internationalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page/home_page_widget.dart';
 import 'second_page/second_page_widget.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,31 +84,56 @@ class _NavBarPageState extends State<NavBarPage> {
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
       body: tabs[_currentPage],
-      bottomNavigationBar: BottomNavigationBar(
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         backgroundColor: Colors.white,
-        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
-        unselectedItemColor: Color(0x8A000000),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24,
+        selectedItemColor: Color(0x00000000),
+        unselectedItemColor: Color(0x00000000),
+        selectedBackgroundColor: Color(0x00000000),
+        borderRadius: 8,
+        itemBorderRadius: 8,
+        margin: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+        width: double.infinity,
+        elevation: 0,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.home_outlined,
+                  color:
+                      currentIndex == 0 ? Color(0x00000000) : Color(0x00000000),
+                  size: 24,
+                ),
+                Text(
+                  'Home',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? Color(0x00000000)
+                        : Color(0x00000000),
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Home',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.home_outlined,
+                  color:
+                      currentIndex == 1 ? Color(0x00000000) : Color(0x00000000),
+                  size: 24,
+                ),
+              ],
             ),
-            label: '',
-            tooltip: '',
           )
         ],
       ),
