@@ -117,7 +117,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                                             0, 16, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            await Navigator.push(
+                                            await Navigator.pushAndRemoveUntil(
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) =>
@@ -125,6 +125,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                                                         initialPage:
                                                             'HomePage'),
                                               ),
+                                              (r) => false,
                                             );
                                           },
                                           text: 'Als ob',
