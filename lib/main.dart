@@ -7,6 +7,7 @@ import 'flutter_flow/internationalization.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_page/home_page_widget.dart';
 import 'second_page/second_page_widget.dart';
+import 'map_search/map_search_widget.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 void main() async {
@@ -80,6 +81,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': HomePageWidget(),
       'second_page': SecondPageWidget(),
+      'mapSearch': MapSearchWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -130,6 +132,19 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icons.home_outlined,
                   color:
                       currentIndex == 1 ? Color(0x00000000) : Color(0x00000000),
+                  size: 24,
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.home_outlined,
+                  color:
+                      currentIndex == 2 ? Color(0x00000000) : Color(0x00000000),
                   size: 24,
                 ),
               ],
