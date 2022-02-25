@@ -1,4 +1,3 @@
-import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../main.dart';
@@ -14,8 +13,6 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  LatLng googleMapsCenter;
-  Completer<GoogleMapController> googleMapsController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,7 +33,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFF5F5F5),
       body: SafeArea(
         child: GestureDetector(
@@ -60,26 +56,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [],
-                ),
-                Expanded(
-                  child: FlutterFlowGoogleMap(
-                    controller: googleMapsController,
-                    onCameraIdle: (latLng) => googleMapsCenter = latLng,
-                    initialLocation: googleMapsCenter ??=
-                        LatLng(13.106061, -59.613158),
-                    markerColor: GoogleMarkerColor.violet,
-                    mapType: MapType.normal,
-                    style: GoogleMapStyle.standard,
-                    initialZoom: 14,
-                    allowInteraction: true,
-                    allowZoom: true,
-                    showZoomControls: true,
-                    showLocation: true,
-                    showCompass: true,
-                    showMapToolbar: false,
-                    showTraffic: false,
-                    centerMapOnMarkerTap: true,
-                  ),
                 ),
               ],
             ),
