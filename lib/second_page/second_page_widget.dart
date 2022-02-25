@@ -92,7 +92,7 @@ class _SecondPageWidgetState extends State<SecondPageWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Auf movA kannst du alles buchen.',
+                                          '2 Auf movA kannst du alles buchen.',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
